@@ -1,0 +1,52 @@
+<div class="row">
+
+	<div>
+		<p class="help-block"></p>
+		<div class="form-group">
+			<label for="diary-editor-change-chapter-title" class="control-label">Title</label>
+			<input id="diary-editor-change-chapter-title" class="form-control"
+				ng-model="$parent.title" type="text" maxlength="100" />
+		</div>
+
+		<div class="form-group">
+			<label for="diary-editor-change-chapter-location"
+				class="control-label">Location</label>
+			<!-- /.col-lg-6 -->
+			<div class=".col-xs-6 .col-sm-4 .col-md-4">
+				<div class="input-group">
+					<input id="address" type="text" ng-model="$parent.input_address"
+						class="form-control" maxlength="100"> <span
+						class="input-group-btn">
+						<button class="btn btn-default" ng-click="codeAddress()">search</button>
+						<button class="btn btn-default" ng-click="$parent.getLocation1()">CurrentLoction</button>
+
+					</span>
+
+				</div>
+				<!-- /input-group -->
+			</div>
+			<!-- /.col-lg-6 -->
+
+			<div>
+
+				<input id="ad_lat" type="text" ng-model="$parent.ad_lat"> <input
+					id="ad_lng" type="text" ng-model="$parent.ad_lng">
+			</div>
+
+			<p class="help-block">diary에 등록하고자 하는 위치를 검색하거나 현재 위치를 받아 위치를 지구본에 등록합니다.</p>
+
+
+		</div>
+		<div class="form-group">
+			<label for="diary-editor-change-chapter-title" class="control-label">Travel
+				Diary</label>
+			<textarea cols="40" rows="4" id="diary-editor-change-chapter-text"
+				class="form-control td-change-chapter-textarea" maxlength="40000"
+				ng-model="$parent.memo"></textarea>
+		</div>
+
+	</div>
+
+
+
+</div>

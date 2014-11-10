@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="css/video_index.css" rel="stylesheet">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+<script
+	src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+<script
+	src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.2.js"></script>
+<link
+	href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
+	rel="stylesheet">
+
+
+<style>
+
+
+html,body {
+	padding: 0;
+	margin: 0;
+}
+
+.container {
+	top: 55%;
+	left: 10%;
+	position: absolute;
+}
+
+input {
+	color: black;
+}
+
+#logo {
+	position: absolute;
+	top: 50%;
+	left: 17%;
+	overflow: hidden;
+	margin-top: -150px;
+	overflow: hidden;
+}
+
+#logo p {
+	color: white;
+	font-size: 300%;
+}
+
+#paus {
+	margin-left: 5px;
+}
+</style>
+
+</head>
+<body>
+	<div id="logo">
+		<hr />
+		<img alt="title" src="/views/resource/title.png">
+		<hr />
+	</div>
+	<div class="container">
+
+
+		<!--  
+		<div id="polina" style="margin-left: 5px;">
+
+			<button>Pause</button>
+
+		</div>
+-->
+		<div id="polina">
+
+			<button id="enter">Enter</button>
+
+		</div>
+	</div>
+	<video autoplay id="bgvid" loop>
+		<!-- WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
+
+		<source src="/video/midnight.mp4" type="video/mp4">
+	</video>
+
+
+
+	<!-- end footer -->
+</body>
+<script type="text/javascript" src="js/video_index.js"></script>
+
+</html>

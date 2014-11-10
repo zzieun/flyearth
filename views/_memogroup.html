@@ -1,0 +1,22 @@
+<div class="modal-header">
+	<h3 class="modal-title">{{travel_title}}</h3>
+</div>
+<div class="modal-body">
+	<div style="height: 300px">
+		<carousel interval="myInterval"> <slide
+			ng-repeat="slide in slides" active="slide.active"> <img
+			style="height: 300px; margin: auto;"
+			ng-src="/uploads/{{slide.pic_url}}" style="margin:auto;">
+		<div class="carousel-caption">
+			<h4>{{travel_adr}}</h4>
+		</slide> </carousel>
+	</div>
+</div>
+<div class="row">
+
+	<button id="btn_close" type="button" class="close" aria-hidden="true"
+		ng-click="hidepic() ">×</button>
+</div>
+</div>
+
+</div>

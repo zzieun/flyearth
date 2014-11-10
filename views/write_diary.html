@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+
+<script
+	src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+<script src='js/angular-route.js'></script>
+<script
+	src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.2.js"></script>
+<link
+	href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
+	rel="stylesheet">
+<link
+	href="http://code.google.com/apis/maps/documentation/javascript/examples/default.css"
+	rel="stylesheet" type="text/css" />
+
+<script src="http://www.webglearth.com/v2/api.js"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+<script src="js/angular-file-upload-shim.min.js"></script>
+<script src="js/angular-file-upload.min.js"></script>
+<style type="text/css">
+.demo {
+	text-align: left; .
+	input-group-btn: last-child>.btn{
+    margin-top: 25px;
+}
+
+}
+html,body {
+	padding: 10px;
+	margin: 10px;
+}
+
+#earth_div {
+	width: 800px;
+	height: 800px;
+	position: relative;
+	float: left;
+	display: inline-block;
+}
+
+.container {
+	margin-right: auto;
+	margin-left: auto;
+	width: 80%;
+}
+
+.contr {
+	margin-right: auto;
+	width: 30%;
+	position: absolute;
+	right: 0;
+	margin-right: 200px;
+}
+
+#map-canvas {
+	margin-top: 10px;
+	width: 40%;
+	height: 390px;
+	display: none;
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+#ad_lat {
+	display: none;
+}
+
+#ad_lng {
+	display: none;
+}
+
+.help-block {
+	margin-top: 10px;
+}
+
+h1 {
+	display: inline-block;
+}
+
+#btn_home {
+	float: right;
+	margin-top: 30px;
+}
+
+.drop-box {
+	width: 100%;
+	height: 100px;
+	border: solid 1px gray;
+	overflow: auto;
+}
+</style>
+</head>
+<body ng-app="writeDiary" ng-controller="earth_controller">
+	<h1>Write Your Travel Diary</h1>
+	<button id="btn_home" type="button" class="btn btn-default navbar-btn"
+		ng-click="gomain()">
+		HOME <span class="glyphicon glyphicon-home"></span>
+	</button>
+	<hr />
+	<div class="container">
+		<div id="earth_div"></div>
+		<div class="contr">
+
+			<div>
+				<p class="help-block">Location Table</p>
+
+
+				<table class="table table-condensed">
+					<tr ng-repeat="x in search_citylist">
+						<td>{{x.address}}</td>
+						<td>
+
+							<button type="button" class="btn btn-default"
+								ng-click="removePostion($index)">
+								remove <span class="glyphicon glyphicon-minus"></span>
+							</button>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<p id="demo"></p>
+
+			<div class="get_current_loc"
+				ng-include="'_get_current_location.html'"></div>
+
+			<div class="diary_Form" ng-include="'_write_form.html'"></div>
+
+			<div id="bottom">
+
+
+				<div id="fileupload_bar">
+					<input type="file" enctype="multipart/form-data"
+						ng-file-select="onFileSelect($files)" multiple accept="image/*">
+					<div class="button" ng-file-select="onFileSelect($files)"
+						data-multiple="true"></div>
+					<div ng-file-drop="onFileSelect($files)"
+						ng-file-drag-over-class="optional-css-class-name-or-function"
+						ng-show="dropSupported">drop files here</div>
+
+
+					<!-- ng-file-drag-over-class and ng-file-drag-over-delay are optional for styling and css transition handling #277 -->
+					<div ng-show="dropSupported" class="drop-box"
+						ng-file-drop="onFileSelect($files)"
+						ng-file-drop-available="dropSupported=true"
+						ng-file-drag-over-class="dragOverClass($event)"
+						ng-file-drag-over-delay="100">
+						<div>
+							File list: <br />
+							<div ng-show="selectedFiles != null">
+								<div class="sel-file" ng-repeat="f in selectedFiles">
+
+									<table class="table table-condensed">
+										<tr class="sel-file" ng-repeat="f in selectedFiles">
+
+
+
+											<td>{{($index + 1) + '.'}}</td>
+											<td>{{f.name}} - size: {{f.size}}B - type: {{f.type}}</td>
+											<td>
+												<button class="btn btn-default" ng-click="abort($index)">
+													<span class="glyphicon glyphicon-minus"></span>
+												</button>
+											</td>
+										</tr>
+									</table>
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<div ng-show="!dropSupported">HTML5 Drop File is not
+						supported on this browser</div>
+					<br />
+					<div class="err" ng-show="errorMsg != null">{{errorMsg}}</div>
+				</div>
+				<button class="btn btn-primary btn-lg btn-block"
+					ng-click="write_save()">WRITE ON</button>
+				<div id='map-canvas'></div>
+
+			</div>
+
+		</div>
+
+	</div>
+</body>
+<script type="text/javascript" src="js/writediary.js"></script>
+</html>

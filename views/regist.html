@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html>
+<meta charset="utf-8">
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+<script
+	src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+<script
+	src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.2.js"></script>
+<link
+	href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
+	rel="stylesheet">
+<style type="text/css">
+html,body {
+	padding: 0;
+	margin: 0;
+}
+
+#earth_div {
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	position: relative;
+}
+
+.container {
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	color: white;
+}
+
+.demo {
+	text-align: left; .
+	input-group-btn: last-child>.btn{
+    margin-top: 25px;
+}
+
+}
+form div {
+	color: white;
+	width: 300px;
+	margin-right: 5px;
+}
+
+.form-group {
+	margin-top: 20px;
+}
+
+input {
+	color: black;
+}
+</style>
+
+</head>
+
+<body>
+	<div id="earth_div"></div>
+
+	<div class="container" ng-app="writeDiary">
+
+
+		<h1>회원가입</h1>
+		<hr />
+		<div ng-controller="UserFormCtrl">
+
+
+			<h3>Users</h3>
+
+
+
+			<form class="form-horizontal" focus-me="shouldBeOpen">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Email:</label>
+					<div class="col-sm-10">
+						<input type="text" ng-model="user_email" value="user_email"
+							class="form-control" placeholder="only Email!"
+							ng-disabled="!edit">
+
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Name:</label>
+					<div class="col-sm-10">
+						<input type="text" ng-model="user_name" ng-disabled="!edit"
+							placeholder="full Name" class="form-control">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Password:</label>
+					<div class="col-sm-10">
+						<input type="password" ng-model="passw1" placeholder="Password"
+							class="form-control">
+
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Repeat:</label>
+					<div class="col-sm-10">
+						<input type="password" ng-model="passw2"
+							placeholder="Repeat Password" class="form-control">
+					</div>
+				</div>
+			</form>
+
+
+			<button class="btn btn-success" ng-disabled="error || incomplete"
+				tooltip="비밀번호 분실 시, 이메일로 전송됩니다." tooltip-placement="right"
+				data-ng-click="add_user()">
+				<span class="glyphicon glyphicon-save"></span> <span
+					ng-show="error || incomplete">회원 가입 하기</span> <span
+					ng-hide="error || incomplete">{{user_name}} 님 환영합니다.Click!<span>
+			</button>
+
+		</div>
+
+		<div class="help">
+			<hr>
+			<div>
+				<i class="icon-info-sign"></i> 도움말
+			</div>
+			<ul>
+				<li>비밀번호는 암호화되어 저장됩니다.</li>
+			</ul>
+		</div>
+	</div>
+
+</body>
+<script type="text/javascript" src="js/_user.js"></script>
+<script src="http://www.webglearth.com/v2/api.js"></script>
+<script type="text/javascript" src="webgl/script_background.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		initialize();
+	});
+</script>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+<html>
+<meta charset="utf-8">
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+<script
+	src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+<script
+	src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.2.js"></script>
+<link
+	href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
+	rel="stylesheet">
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+
+<style type="text/css">
+#earth_div {
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	position: relative;
+}
+
+html,body {
+	padding: 0;
+	margin: 0;
+}
+
+p {
+	color: white;
+}
+
+#bar {
+	top: 0;
+	right: 0;
+	left: 0;
+	position: absolute;
+}
+
+a {
+	color: black;
+}
+
+#button_bar {
+	text-align: right;
+	margin-right: 30px;
+}
+
+p {
+	display: inline-block;
+}
+
+#bar {
+	padding: 10px;
+	margin: 10px;
+}
+
+.traveltable {
+	float: left;
+	width: 500px;
+	height: 600px;
+	color: white;
+	position: absolute;
+	margin-top: 10px;
+}
+
+.a-diary {
+	right: 0px;
+	width: 500px;
+	height: 310px;
+	color: white;
+	position: absolute;
+	margin-top: 250px;
+}
+
+th {
+	background-color: gray;
+}
+
+.traveltable tbody {
+	height: 100%;
+	max-height: 100%;
+	overflow-y: auto;
+	max-height: 70%;
+}
+
+#search_tb {
+	text-align: right;
+}
+
+#search_tb_input {
+	width: 100%;
+	margin-bottom: 2px;
+}
+
+#modal_p p {
+	color: black;
+}
+
+#map-canvas {
+	height: 300px;
+	width: 30%;
+	display: inline-block;
+}
+
+#pano {
+	width: 65%;
+	height: 300px;
+	display: inline-block;
+}
+
+#map {
+	width: 500px;
+	height: 300px;
+	right: 0px;
+	position: absolute;
+}
+
+#btn_close {
+	color: white;
+}
+.a-diary{display: none;}
+</style>
+
+</head>
+
+<body>
+
+	<div ng-app="mainUserEarth" ng-controller="main_user_controller">
+
+
+
+
+		<div id="earth_div"></div>
+		<div id="bar">
+
+			<br>
+			<div>
+
+				<div id="button_bar">
+
+					<button type="button" class="btn btn-link"
+						ng-click="logout_open()">
+						<p class="lead">Email: {{user_email}} Name: {{user_name}}</p>
+						<span class="glyphicon glyphicon-user"></span>
+					</button>
+
+
+					<div ng-include="'_list_modal.html'"></div>
+
+
+					<button class="btn btn-default" data-ng-click="go_wirtediary()">
+						작성<span class="glyphicon glyphicon-pencil"></span>
+					</button>
+				
+
+				</div>
+				<hr />
+				<div id="map">
+
+
+					<div id="map-canvas"></div>
+					<div id="pano"></div>
+					<button type="button" class="close" ng-click="map_hide()"
+						style="color: white; position: absolute;">×</button>
+				</div>
+			</div>
+
+
+			<button class="btn btn-default" id="btn_stop" ng-click="stop()">
+				<span ng-show="stop_flag" class="glyphicon glyphicon-play">RESTART</span>
+				<span ng-hide="stop_flag" class="glyphicon glyphicon-pause">STOP</span>
+			</button>
+			<div class="table" ng-include="'_travel_table.html'"></div>
+
+			<div  class="a-diary" ng-include="'_memogroup.html'"></div>
+		</div>
+
+
+
+
+
+	</div>
+</body>
+<script src="http://www.webglearth.com/v2/api.js"></script>
+
+<script type="text/javascript" src="js/main_user_earth.js"></script>
+
+</html>

@@ -1,0 +1,103 @@
+
+
+
+<div>
+
+	<script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Travel List</h3>
+        </div>
+        <div class="modal-body">
+            
+
+<table table class="table table-hover">
+						<thead>
+							<tr>
+								<th width="200" data-sortable="true">Nation</th>
+								<th width="200" data-sortable="true">City</th>
+								<th   width="250" data-sortable="true">Memo</th>
+								<th  width="200" data-sortable="true">trave ldate</th>
+								<th  width="200" data-sortable="true">write date</th>
+
+							</tr>
+
+						</thead>
+						<tbody>
+						<tr ng-repeat="item in items | filter:search_table " ng-click="selected.item = item">
+								<td>{{item.nation}}</td>
+								<td>{{item.city}}</td>
+								<td>{{item.memo}}</td>
+
+								<td>{{item.travel_date | date:'yyyy/MM/dd' }}</td>
+								<td>{{item.write_date | date:'yyyy/MM/dd' }}</td>
+
+								
+							</tr>
+						</tbody>
+					</table>
+					<input type="text" ng-model="search_table">
+
+            Selected: <b>{{ selected.item.nation+" "+selected.item.city  }}</b>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">GO {{selected.item.city}}</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+	<script type="text/ng-template" id="myModalStreetViewContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">{{travel_title}}</h3>
+        </div>
+        <div class="modal-body">
+<div style="height: 305px">
+<carousel interval="myInterval">
+<slide ng-repeat="slide in slides" active="slide.active">
+<img style="height: 305px; margin:auto;" ng-src="/uploads/{{slide.pic_url}}" style="margin:auto;">
+<div class="carousel-caption">
+<h4>{{travel_adr}}</h4>
+</slide>
+</carousel>
+</div>
+</div>
+ <div class="row">
+
+<div id="modal_p" >
+      Interval, in milliseconds: <input type="number" class="form-control" ng-model="myInterval">
+      <br />
+
+<dl class="dl-horizontal">
+  <dt><strong>Memo:</strong></dt>
+  <dd>{{travel_memo}}</dd>
+  <dt><strong>writeDate:</strong></dt>
+  <dd>{{travel_writedate| date : 'yyyy/MM/dd'}}</dd>
+  <dt><strong>travelDate:</strong></dt>
+  <dd>{{travel_traveldate | date : 'yyyy/MM/dd'}}</dd>
+ <dt><strong>상세주소:</strong></dt>
+  <dd>{{formatted_address}}</dd>
+</dl>
+
+    </div>
+  </div>
+</div>
+
+        </div>
+        <div class="modal-footer">
+<button type="button" class="close" aria-hidden="true" ng-click="cancel()">×</button>
+        </div>
+    </script>
+	<script type="text/ng-template" id="myModalLogOutContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">로그아웃 하시겠습니까?</h3>
+        </div>
+        <div class="modal-body">
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">YES</button>
+            <button class="btn btn-warning" ng-click="cancel()">NO</button>
+        </div>
+    </script>
+
+
+</div>
+

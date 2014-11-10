@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html>
+<meta charset="utf-8">
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+<script
+	src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+<script
+	src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.2.js"></script>
+<link
+	href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
+	rel="stylesheet">
+<style type="text/css">
+#earth_div {
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	position: relative;
+}
+
+div #login {
+	float: left;
+	margin-right: 10px;
+	color: white;
+}
+
+div #password {
+	float: left;
+	margin-right: 10px;
+	color: white;
+}
+
+div #login_button_bar {
+	float: left;
+}
+
+html,body {
+	padding: 0;
+	margin: 0;
+}
+
+.container {
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	position: absolute;
+}
+
+input {
+	color: black;
+}
+</style>
+
+</head>
+
+<body>
+	<div id="earth_div"></div>
+
+	<div class="container" ng-app="mainGuest" >
+
+
+		<hr />
+		<div ng-controller="guestCtrl" ng-include="'login_bar.html'"></div>
+		<br>
+		<hr />
+
+	</div>
+</body>
+<script type="text/javascript" src="js/main_guest.js"></script>
+<script src="http://www.webglearth.com/v2/api.js"></script>
+<script type="text/javascript" src="webgl/script_background.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		initialize();
+	});
+</script>
+</html>
